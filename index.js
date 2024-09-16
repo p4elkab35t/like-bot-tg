@@ -8,9 +8,9 @@ export default {
 
 	async fetch(request, env, ctx) {
 		this.API_KEY = env.ENV_BOT_TOKEN;
-        this.API_SECRET = env.ENV_BOT_SECRET;
-        this.LIKED_USERNAME = env.ENV_LIKED_USERNAME? env.ENV_LIKED_USERNAME : '';
-        this.HATED_USERNAME = env.ENV_HATED_USERNAME? env.ENV_HATED_USERNAME : '';
+    	this.API_SECRET = env.ENV_BOT_SECRET;
+    	this.LIKED_USERNAME = env.ENV_LIKED_USERNAME? env.ENV_LIKED_USERNAME : '';
+    	this.HATED_USERNAME = env.ENV_HATED_USERNAME? env.ENV_HATED_USERNAME : '';
 		this.TELEGRAM_URL = `https://api.telegram.org/bot${this.API_KEY}/setMessageReaction?secret_token=${this.API_SECRET}`;
 		return (await this.handleRequest(request));
 	},
@@ -35,7 +35,7 @@ export default {
 				return new Response(`No message`, { status: 200 });
 			}
 
-            const chanceOfReaction = (Math.floor(Math.random() * 20) + 1)==20? true : false;
+            const chanceOfReaction = (Math.floor(Math.random() * 20) + 1)===20;
             if (!chanceOfReaction) {
                 return new Response('OK');
             }
